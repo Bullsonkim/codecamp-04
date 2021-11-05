@@ -1,15 +1,13 @@
 import { useMutation,gql } from "@apollo/client"
-import router, { useRouter } from 'next/router' 
 import{useState} from 'react'
 
 const CREATE_BOARD= gql`
 
     mutation createBoardInput($createBoardInput: CreateBoardInput!){
-      createBoard(createBoardInput: $createBoardInput){
+        createBoard(createBoardInput: $createBoardInput){
           _id
           writer
           title
-          contents
         }
     }   
 `
@@ -82,9 +80,6 @@ export default function BoardsNewPage() {
     }
   
     async function onClickSubmit() {
-
-    
-
       if (myWriter === "") {
         setMyWriterError("작성자를 입력해주세요.");
       }
@@ -98,39 +93,15 @@ export default function BoardsNewPage() {
         setMyContentsError("내용을 입력해주세요.");
       }
       if (myWriter !== "" && myPassword !== "" && myTitle !== "" && myContents !== "") {
-
-        try{
-        
-        //   const result = await createProduct({ 
-        //     variables: {
-        //       createBoardInput: {
-        //             writer:myWriter,
-        //             title:myTitle,
-        //             contents:myContents
-        //         }
-        //     }
-        // })
-
-
             const result = await createBoard({
             variables: {createBoardInput: {writer:myWriter,
             password:myPassword,title:myTitle,contents:myContents}}
                           
         })
-        // console.log(result)
-        // // alert('게시물을 등록합니다!')
-      
-
-      router.push(`/Create-Board/${result.data.createBoard._id}`) 
-
-      }catch(error){
-        console.log(error.message)
-         }   
-
-    } 
-
-
-}
+        console.log(result)
+        alert('게시물을 등록합니다!')``
+      }
+    }
 
     return(
    
