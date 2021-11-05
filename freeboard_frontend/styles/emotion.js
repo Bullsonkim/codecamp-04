@@ -107,9 +107,11 @@ export const RadioBtn = styled.input`
 `
 
 export const Wrapper1 = styled.div`
-    display:flex;
+    width: 85%;
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    padding-top: 20px;
+    padding-top: 40px;
     
 
 `
@@ -152,6 +154,9 @@ export const Wrapper1__inner2 = styled.div`
     display: flex;
     flex-direction: column;
 `
-
+export const ErrorMsg = styled.div`
+    color:red;
+    text-align:
+`
 
 
