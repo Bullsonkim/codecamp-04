@@ -115,8 +115,7 @@ export const RegBtn = styled.button`
     top: 2412px;
     border-radius: 10px;
     border:0;
-
-    background: #FFD600;
+    background-color: ${(props) => props.myCheck===true ? "yellow" : "gray"};
     
 `
 
@@ -175,10 +174,6 @@ export const Wrapper6 = styled.div`
     flex-direction: column;
     align-items: flex-start;  
     text-align:left;
- 
-    
-
-
 `
 export const Wrapper7 = styled.div`
     width: 996px;
