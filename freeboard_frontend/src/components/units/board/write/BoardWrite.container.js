@@ -1,7 +1,7 @@
 import BoardWriteUI from "./BoardWrite.presenter"
 import { useMutation} from "@apollo/client"
 import { useState } from "react"
-import{CREATE_BOARD} from './BoardWrite.queries' 
+import {CREATE_BOARD} from './BoardWrite.queries' 
 import {useRouter} from "next/router"
 
 export default function BoardsNewPage() {
@@ -62,7 +62,7 @@ export default function BoardsNewPage() {
 
 
     async function onClickSubmit() {
-      if (myWriter === "") {
+      if (myWriter === "") { // if(!myWriter)
         setMyWriterError("작성자를 입력해주세요.");
       }
       if (myPassword === "") {
@@ -75,7 +75,7 @@ export default function BoardsNewPage() {
         setMyContentsError("내용을 입력해주세요.");
       }
       if (myWriter !== "" && myPassword !== "" && myTitle !== "" && myContents !== "") {
-            
+            //if(myWriter)
         try{
             console.log(result)
             const result = await createBoard({

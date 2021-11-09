@@ -10,8 +10,12 @@ import {
     WrapperMedia,
     MyLike,
     MyDislike,
-    WrapperlikeDislike
-
+    WrapperlikeDislike,
+    WrapperFooter,
+    ListBtn,
+    FixBtn,
+    DeleteBtn
+    
   } from "../../../styles/board_result";
 
 
@@ -23,7 +27,7 @@ import { faUserCircle,faSmileBeam,faTired } from "@fortawesome/free-solid-svg-ic
 
 
 import { useRouter } from "next/router"
-import { useQuery, gql } from "@apollo/client"
+import { useQuery, useMutation, gql } from "@apollo/client"
 
 const FETCH_BOARD= gql`
 query fetchBoard($boardId : ID!) {
@@ -32,13 +36,24 @@ query fetchBoard($boardId : ID!) {
         writer
         title
         contents
+        createdAt
+        
     }
   }
+`
+const DELETE_BOARD = gql`
+    mutation deleteBoard($boardId: ID!){   
+            deleteBoard(boardId: $boardId)
+    }
 `
 
 
 
+
+
 export default function DynamicProductReadPage(){
+
+     const [deleteBoard]=  useMutation(DELETE_BOARD)
 
        const router = useRouter() 
         const {data} = useQuery(FETCH_BOARD, {
@@ -46,11 +61,35 @@ export default function DynamicProductReadPage(){
         })
             console.log(data)
 
+            function onClickList(){
+                router.push('/boards/main')
+            } 
+            
+            function OnClickFix(){
+                
+
+            }
+            
+            async function OnClickDelete(event){
+                try{
+                  const result = await deleteBoard({
+                      variables: {boardId: router.query.create}
+                  })
+                  alert('게시글이 삭제되었습니다.') 
+                  router.push('/boards/main')  
+                } 
+                catch(error){
+                    alert(error.message)
+                }
+            }
+            
+            
+
         return(
             <Background>
            
             {/* <div>게시판 ID: {router.query.create}</div> */}
-
+            
             <WrapperWriter>
             <FontAwesomeIcon icon={faUserCircle} size="5x"  />
                 <Writer>작성자 {data && data.fetchBoard.writer}</Writer>
@@ -75,12 +114,15 @@ export default function DynamicProductReadPage(){
                 <FontAwesomeIcon icon={faTired} size="3x" color="white"/>
                 <MyDislike>싫어요!</MyDislike>
              </WrapperlikeDislike>
-           
+
+             
+            <WrapperFooter> 
+                <ListBtn onClick={onClickList}>목록으로</ListBtn>
+                <FixBtn onClick={OnClickFix}>수정하기</FixBtn>
+                <DeleteBtn onClick={OnClickDelete}>삭제하기 </DeleteBtn>
+            </WrapperFooter>
             
-
-
-
-
+            
             </Background>
         )
 

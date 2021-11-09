@@ -125,7 +125,6 @@ export const RadioBtn = styled.input`
     font-weight: 500;
     cursor: pointer;
    
-   
 `
 
 export const RadioLabel = styled.div`

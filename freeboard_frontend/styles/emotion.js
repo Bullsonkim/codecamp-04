@@ -176,6 +176,7 @@ export const Wrapper6 = styled.div`
     align-items: flex-start;  
     text-align:left;
  
+ 
     
 
 
@@ -208,5 +209,16 @@ export const ErrorMsg = styled.div`
     color:red;
     text-align:
 `
+
+
+
+export const RadioBtn = styled.input`
+    margin-left: 90px;
+    margin-right: 20px;
+    font-weight: 500;
+    cursor: pointer;
+`
+
+
 
 

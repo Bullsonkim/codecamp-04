@@ -56,12 +56,7 @@ export const WrapperContents = styled.div`
     background:white;
     border-radius: 10px;
 
-    // :after
-    // border-top:15px solid #333333;
-    // border-left: 15px solid transparent;
-    // border-right: 0px solid transparent;
-    // border-bottom: 0px solid transparent;
-    // content:"";
+   
   
     top:10px;
     left:-15px;
@@ -135,5 +130,41 @@ export const MyDislike = styled.div`
     padding-left:10px;
 
 `
+
+
+export const WrapperFooter = styled.div`
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    padding-bottom: 30px;
+`
+
+
+export const ListBtn = styled.button`
+    margin-left: 90px;
+    margin-right: 20px;
+    font-weight: 500;
+    cursor: pointer;
+   
+`   
+
+export const FixBtn = styled.button`
+    margin-left: 90px;
+    margin-right: 20px;
+    font-weight: 500;
+    cursor: pointer;
+   
+`
+
+export const DeleteBtn = styled.button`
+    margin-left: 90px;
+    margin-right: 20px;
+    font-weight: 500;
+    cursor: pointer;
+   
+`
+
+
+
 
 
