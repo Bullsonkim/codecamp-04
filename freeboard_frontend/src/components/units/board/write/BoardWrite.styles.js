@@ -1,206 +1,187 @@
-import styled from "@emotion/styled"; 
+import styled from "@emotion/styled";
 
+export const Wrapper = styled.div`
+  width: 1200px;
+  /* height: 1847px; */
+  border: 1px solid black;
+  margin: 100px;
+  padding-top: 80px;
+  padding-bottom: 100px;
+  padding-left: 102px;
+  padding-right: 102px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+  box-shadow: 0px 4px 20px;
+  background-color: #b2c7d9;
+  border-radius: 10px;
+`;
 
-export const Background = styled.div`
-//    position: absolute;
-    width: 1200px;
-    height: 1847px;
-    left: 360px;
-    top: 717px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    border: 1px solid black;
-    text-align:center;
-    box-sizing: border-box;
-    margin:10px;
-    align-items: center;
-    box-shadow: 0px 4px 20px;
-    background-color: #b2c7d9;
-    border-radius: 10px;
-`
+export const Title = styled.div`
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+`;
 
-export const MyTitle = styled.div`
-    width: 174px;
-    height: 53px;
-    left: 872px;
-    top: 777px;
+export const WriterWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 40px;
+`;
 
-    font-family: Noto Sans CJK KR;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 36px;
-    line-height: 53px;
-    text-align: center;
+export const Writer = styled.input`
+  width: 486px;
+  height: 52px;
+  padding-left: 16px;
+  border: 1px solid #bdbdbd;
+  border-radius: 10px;
+`;
 
-    color: #000000;
-`
-export const Title = styled.input`
-   width: 996px;
-   height: 52px;
-   border-radius: 10px;
-   border:0;
-`
-export const MyContentB = styled.input`
-   width: 996px;
-   height: 480px;
-   padding-bottom: 450px;
-   border-radius: 10px;
-   border:0;
-
-
-`
-
-export const IdPassword = styled.input`
-    width: 486px;
-    height: 52px;
-    padding-right: 50px; 
-    border-radius: 10px;
-    border:0;
- 
-`
-
-
-export const MyContent = styled.input`
-   width: 996px;
-   height: 52px;
-   border-radius: 10px;
-   border:0;
-`
-
-export const PostNum = styled.input`
-   width: 77px;
-   height: 52px;
-   text-align: center;
-   border-radius: 10px;
-   border:0;
-`
+export const Password = styled.input`
+  width: 486px;
+  height: 52px;
+  padding-left: 16px;
+  border: 1px solid #bdbdbd;
+  border-radius: 10px;
+`;
 
 export const Label = styled.div`
-    font-size: 16px;
-    
+  padding-bottom: 16px;
+  font-size: 16px;
+  font-weight: 500;
+`;
 
-    
-`
+export const InputWrapper = styled.div`
+  padding-top: 40px;
+`;
 
-export const PostBtn = styled.button`
-    width: 124px;
-    height: 52px;
-    background-color:yellow;
-    color: black;
-    margin-left:10px;
-    border-radius: 10px;
-    border:0;
-`
+export const Subject = styled.input`
+  width: 996px;
+  height: 52px;
+  padding-left: 16px;
+  border: 1px solid #bdbdbd;
+  border-radius: 10px;
+`;
 
-export const PictureBtn = styled.button`
-    widht : 78px;
-    height : 78px;
-    color: #4F4F4F;
-    margin-right: 10px;
-    border:0;
-    background-color:yellow;
-    border-radius: 10px;
-`
+export const Contents = styled.textarea`
+  width: 996px;
+  height: 480px;
+  padding-left: 16px;
+  padding: 14px;
+  border: 1px solid #bdbdbd;
+  border-radius: 10px;
+`;
 
-export const RegBtn = styled.button`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 14px 60px;
-    width: 179px;
-    height: 52px;
-    left: 870px;
-    top: 2412px;
-    border-radius: 10px;
-    border:0;
-    background-color: ${(props) => props.myCheck===true ? "yellow" : "gray"};
-    
-`
+export const ZipcodeWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 
-export const RadioBtn = styled.input`
-    margin-left: 90px;
-    margin-right: 20px;
-    font-weight: 500;
-    cursor: pointer;
-   
-`
+export const Zipcode = styled.input`
+  width: 77px;
+  height: 52px;
+  padding-left: 16px;
+  border: 1px solid #bdbdbd;
+  border-radius: 10px;
+`;
 
-export const RadioLabel = styled.div`
-    margin-left: 8px;
-    margin-right: 20px;
-    font-weight: 500;
-    cursor: pointer;
-`
+export const SearchButton = styled.button`
+  width: 124px;
+  height: 52px;
+  margin-left: 16px;
+  background-color: black;
+  cursor: pointer;
+  color: white;
+  border-radius: 10px;
+`;
 
-export const Wrapper1 = styled.div`
-  
-    display: flex;
-    align-itmes: center;
-    flex-direction: row;
-    justify-content: space-between;
+export const Address = styled.input`
+  width: 996px;
+  height: 52px;
+  margin-top: 16px;
+  padding-left: 16px;
+  border: 1px solid #bdbdbd;
+  border-radius: 10px;
+`;
 
-    text-align:left;
-    
+export const Youtube = styled.input`
+  width: 996px;
+  height: 52px;
+  padding-left: 16px;
+  border: 1px solid #bdbdbd;
+  border-radius: 10px;
+`;
 
-`
-export const Wrapper2 = styled.div`
-    padding-top: 10px;
-    text-align:left;
-`
-export const Wrapper3 = styled.div`
-    padding-top: 10px;
-    text-align:left;
-`
-export const Wrapper4 = styled.div`
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: flex-start;   
-    input{margin-top:10px;}
-`
-export const Wrapper5 = styled.div`
-    padding-top: 10px;
-    text-align: left;
-   
-`
-export const Wrapper6 = styled.div`
-    width:996px;
-    padding-top: 10px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: flex-start;  
-    text-align:left;
-`
-export const Wrapper7 = styled.div`
-    width: 996px;
-    padding-top: 40px;
-    display:flex;
-    flex-direction:row;
-    align-itmes:center;
-  
-    
-`
-export const Wrapper8 = styled.div`
-    padding-top: 10px;
-    text-align: center;
-`
+export const ImageWrapper = styled.div`
+  width: 996px;
+  padding-top: 40px;
+`;
 
-export const Wrapper1__inner = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-right:24px;
-    `   
+export const UploadButton = styled.button`
+  width: 78px;
+  height: 78px;
+  background-color: #bdbdbd;
+  margin-right: 24px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+`;
 
-export const Wrapper1__inner2 = styled.div`
-    display: flex;
-    flex-direction: column;
-`
-export const ErrorMsg = styled.div`
-    color:red;
-    text-align:
-`
+export const OptionWrapper = styled.div`
+  width: 996px;
+  padding-top: 40px;
+`;
 
+export const RadioButton = styled.input`
+  cursor: pointer;
+`;
 
+export const RadioLabel = styled.label`
+  margin-left: 8px;
+  margin-right: 20px;
+  font-weight: 500;
+  cursor: pointer;
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 80px;
+`;
+
+export const CancelButton = styled.button`
+  width: 179px;
+  height: 52px;
+  background-color: #bdbdbd;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 12px;
+  margin-right: 12px;
+  cursor: pointer;
+`;
+
+export const SubmitButton = styled.button`
+  width: 179px;
+  height: 52px;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 12px;
+  margin-right: 12px;
+  background-color: ${(props) => props.isActive ? 'yellow' : 'none'};
+  border-radius: 10px;
+  :hover {
+    cursor: ${(props) => props.isActive ? 'pointer' : 'default'};
+  }
+`;
+
+export const Error = styled.div`
+  padding-top: 10px;
+  font-size: 14px;
+  color: red;
+`;
