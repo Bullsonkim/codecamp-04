@@ -1,10 +1,11 @@
 import BoardWriteUI from './BoardWrite.presenter'
 import { CREATE_BOARD, UPDATE_BOARD } from './BoardWrite.queries'
-import { useState } from 'react'
+import { useState,ChangeEvent } from 'react'
 import { useMutation } from "@apollo/client";
 import { useRouter } from 'next/router'
+import {IBoardWriteProps} from "./BoardWrite.types"
 
-export default function BoardWrite(props){
+export default function BoardWrite(props:IBoardWriteProps){
     const router = useRouter()
 
     const [myWriter, setMyWriter] = useState("");
@@ -22,7 +23,7 @@ export default function BoardWrite(props){
     const [createBoard] = useMutation(CREATE_BOARD);
     const [updateBoard] = useMutation(UPDATE_BOARD);
   
-    function onChangeMyWriter(event) {
+    function onChangeMyWriter(event: ChangeEvent<HTMLInputElement>) {
       setMyWriter(event.target.value);
       if (event.target.value !== "") {
         setMyWriterError("");
@@ -35,7 +36,7 @@ export default function BoardWrite(props){
       }
     }
   
-    function onChangeMyPassword(event) {
+    function onChangeMyPassword(event: ChangeEvent<HTMLInputElement>) {
       setMyPassword(event.target.value);
       if (event.target.value !== "") {
         setMyPasswordError("");
@@ -48,7 +49,7 @@ export default function BoardWrite(props){
       }
     }
   
-    function onChangeMyTitle(event) {
+    function onChangeMyTitle(event: ChangeEvent<HTMLInputElement>) {
       setMyTitle(event.target.value);
       if (event.target.value !== "") {
         setMyTitleError("");
@@ -61,7 +62,7 @@ export default function BoardWrite(props){
       }
     }
   
-    function onChangeMyContents(event) {
+    function onChangeMyContents(event: ChangeEvent<HTMLTextAreaElement>) {
       setMyContents(event.target.value);
       if (event.target.value !== "") {
         setMyContentsError("");
@@ -102,7 +103,7 @@ export default function BoardWrite(props){
       }
     }
 
-    async function fix(){
+    async function fixBtn(){
       // alert ("수정하기 버튼을 누르셨습니다!")
       const result = await updateBoard({
           variables: {UpdateBoardInput:{
@@ -114,7 +115,6 @@ export default function BoardWrite(props){
       });
       console.log(result)
       router.push(`/boards/${router.query.boardId}` )
-    
     }
 
     return (
@@ -131,7 +131,7 @@ export default function BoardWrite(props){
           isActive={isActive}
 
           rf={props.isEdit}
-          fix={fix}
+          fixBtn={fixBtn}
 
         />
     )

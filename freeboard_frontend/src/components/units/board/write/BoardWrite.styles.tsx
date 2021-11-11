@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+import{IBoardWritestylesProps} from './BoardWrite.types'
+
 
 export const Wrapper = styled.div`
   width: 1200px;
@@ -173,10 +175,10 @@ export const SubmitButton = styled.button`
   font-weight: 500;
   margin-left: 12px;
   margin-right: 12px;
-  background-color: ${(props) => props.isActive ? 'yellow' : 'none'};
+  background-color: ${(props:IBoardWritestylesProps) => props.isActive ? 'yellow' : 'none'};
   border-radius: 10px;
   :hover {
-    cursor: ${(props) => props.isActive ? 'pointer' : 'default'};
+    cursor: ${(props:IBoardWritestylesProps) => props.isActive ? 'pointer' : 'default'};
   }
 `;
 

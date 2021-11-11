@@ -1,3 +1,4 @@
+import{IBoardListStylesProps} from './BoardWrite.types'
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
@@ -27,7 +28,7 @@ export const Row = styled.div`
 `;
 
 export const TextToken = styled.span`
-  color: ${(props) => (props.isMatched ? "red" : "black")};
+  color: ${(props:IBoardListStylesProps) => (props.isMatched ? "red" : "black")};
 `;
 
 export const ColumnHeaderBasic = styled.div`

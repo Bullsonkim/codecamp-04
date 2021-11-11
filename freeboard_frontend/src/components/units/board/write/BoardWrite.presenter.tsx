@@ -22,11 +22,12 @@ import {
     UploadButton,
     Error
 } from "./BoardWrite.styles";
+import {IBoardWriteUIProps} from "./BoardWrite.types"
 
-export default function BoardWriteUI(props){
+export default function BoardWriteUI(props:IBoardWriteUIProps){
     return (
         <Wrapper>
-            <Title>게시판 {props.fr ? "수정" : "등록"}</Title>
+            <Title>게시판 {props.fixBtn ? "수정" : "등록"}</Title>
             <WriterWrapper>
                 <InputWrapper>
                     <Label>작성자</Label>
@@ -35,7 +36,7 @@ export default function BoardWriteUI(props){
                 </InputWrapper>
                 <InputWrapper>
                     <Label>비밀번호</Label>
-                    <Password type="password" onChange={props.onChangeMyPassword} />
+                    <Password type="password" placeholder="비밀번호를 입력해주세요" onChange={props.onChangeMyPassword} />
                     <Error>{props.myPasswordError}</Error>
                 </InputWrapper>
             </WriterWrapper>
@@ -90,7 +91,7 @@ export default function BoardWriteUI(props){
                     disabled={!props.isActive}
                     isActive={props.isActive}
                 >
-                    등록하기
+                    {props.fixBtn ? "수정" : "등록"}하기
                 </SubmitButton>
             </ButtonWrapper>
         </Wrapper>
