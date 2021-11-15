@@ -1,11 +1,11 @@
 import BoardWriteUI from './BoardWrite.presenter'
 import { CREATE_BOARD, UPDATE_BOARD } from './BoardWrite.queries'
-import { useState,ChangeEvent } from 'react'
+import { ChangeEvent, useState } from 'react'
 import { useMutation } from "@apollo/client";
 import { useRouter } from 'next/router'
-import {IBoardWriteProps} from "./BoardWrite.types"
+import { IBoardWriteProps, IMyUpdateBoardInput } from './BoardWrite.types';
 
-export default function BoardWrite(props:IBoardWriteProps){
+export default function BoardWrite(props: IBoardWriteProps){
     const router = useRouter()
 
     const [myWriter, setMyWriter] = useState("");
@@ -103,18 +103,28 @@ export default function BoardWrite(props:IBoardWriteProps){
       }
     }
 
-    async function fixBtn(){
-      // alert ("수정하기 버튼을 누르셨습니다!")
-      const result = await updateBoard({
-          variables: {UpdateBoardInput:{
-              title: myTitle,
-              contents: myContents
-            }, password: myPassword,
-            boardId: router.query.boardId
+    async function onClickUpdate() {
+      if (!myTitle && !myContents) {
+        alert("수정된 내용이 없습니다.");
+        return
+      }
+
+      const myUpdateboardInput: IMyUpdateBoardInput = {};
+      if (myTitle) myUpdateboardInput.title = myTitle;
+      if (myContents) myUpdateboardInput.contents = myContents;
+
+      try {
+        await updateBoard({ 
+          variables: { 
+            boardId: router.query.boardId,
+            password: myPassword,
+            updateBoardInput: myUpdateboardInput
           }
-      });
-      console.log(result)
-      router.push(`/boards/${router.query.boardId}` )
+        });
+        router.push(`/boards/${router.query.boardId}`)
+      } catch(error) {
+        alert(error.message)
+      }
     }
 
     return (
@@ -128,11 +138,10 @@ export default function BoardWrite(props:IBoardWriteProps){
           onChangeMyTitle={onChangeMyTitle}
           onChangeMyContents={onChangeMyContents}
           onClickSubmit={onClickSubmit}
+          onClickUpdate={onClickUpdate}
           isActive={isActive}
-
-          rf={props.isEdit}
-          fixBtn={fixBtn}
-
+          isEdit={props.isEdit}
+          data={props.data}
         />
     )
 }

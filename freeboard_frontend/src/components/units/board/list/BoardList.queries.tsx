@@ -10,3 +10,13 @@ export const FETCH_BOARDS = gql`
     }
   }
 `;
+export const BEST_BOARDS = gql`
+  query {
+    fetchBoardsOfTheBest {
+      writer
+      title
+      likeCount
+      createdAt
+    }
+  }
+`;

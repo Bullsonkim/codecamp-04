@@ -7,6 +7,8 @@ export default function BoardDetail(){
   const router = useRouter()
   const [deleteBoard] = useMutation(DELETE_BOARD);
 
+
+  
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.boardId },
   })
