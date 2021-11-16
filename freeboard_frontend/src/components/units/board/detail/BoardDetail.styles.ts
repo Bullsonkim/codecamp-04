@@ -124,3 +124,23 @@ export const Dislikeicon = styled(DislikeOutlined)`
   font-size: 80px;
   color: red;
 `;
+
+export const LikeWrapper = styled.div``;
+
+export const DisLikeWrapper = styled.div``;
+
+export const LikeCount = styled.div`
+  font-size: 40px;
+  padding-left: 20px;
+  padding-top: 10px;
+  color: white;
+`;
+
+export const DisLikeCount = styled.div`
+  font-size: 40px;
+  padding-left: 20px;
+  padding-top: 10px;
+  color: red;
+`;
+
+export const Youtube = styled.div``;

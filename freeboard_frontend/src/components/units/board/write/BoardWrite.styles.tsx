@@ -188,3 +188,5 @@ export const Error = styled.div`
   font-size: 14px;
   color: red;
 `;
+
+export const Zonecode = styled.div``;

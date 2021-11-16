@@ -3,7 +3,7 @@ import * as S from "./BoardDetail.styles";
 import ReactDOM from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import styled from "@emotion/styled";
+import ReactPlayer from "react-player/youtube";
 
 export default function BoardDetailUI(props) {
   return (
@@ -17,19 +17,32 @@ export default function BoardDetailUI(props) {
               <S.CreatedAt>{props.data?.fetchBoard.createdAt}</S.CreatedAt>
             </S.Info>
           </S.AvatarWrapper>
-          =
         </S.Header>
         <S.Body>
           <S.Title>{props.data?.fetchBoard.title}</S.Title>
           <hr />
           <S.Contents>{props.data?.fetchBoard.contents}</S.Contents>
+          <S.Youtube>
+            <ReactPlayer
+              url={props.data?.fetchBoard.youtubeUrl}
+              width="468px"
+              height="240px"
+            />
+          </S.Youtube>
         </S.Body>
         <S.IconWrapper>
-          <S.Likeicon />
-          <S.Dislikeicon />
+          <S.LikeWrapper>
+            <S.Likeicon onClick={props.onClickLike} />
+            <S.LikeCount>{props.data?.fetchBoard.likeCount} </S.LikeCount>
+          </S.LikeWrapper>
+          <S.DisLikeWrapper>
+            <S.Dislikeicon onClick={props.onClicekDisLike} />
+            <S.DisLikeCount>
+              {props.data?.fetchBoard.dislikeCount}
+            </S.DisLikeCount>
+          </S.DisLikeWrapper>
         </S.IconWrapper>
       </S.CardWrapper>
-
       <S.BottomWrapper>
         <S.Button onClick={props.onClickMoveToList}>목록으로</S.Button>
         <S.Button onClick={props.onClickFix}>수정하기</S.Button>

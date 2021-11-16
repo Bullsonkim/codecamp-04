@@ -21,6 +21,7 @@ import {
   ZipcodeWrapper,
   UploadButton,
   Error,
+  Zonecode,
 } from "./BoardWrite.styles";
 import { IBoardWriteUIProps } from "./BoardWrite.types";
 
@@ -41,7 +42,11 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
         </InputWrapper>
         <InputWrapper>
           <Label>비밀번호</Label>
-          <Password type="password" placeholder="비밀번호를 입력하세요." onChange={props.onChangeMyPassword} />
+          <Password
+            type="password"
+            placeholder="비밀번호를 입력하세요."
+            onChange={props.onChangeMyPassword}
+          />
           <Error>{props.myPasswordError}</Error>
         </InputWrapper>
       </WriterWrapper>
@@ -70,12 +75,16 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
           <Zipcode placeholder="07250" readOnly />
           <SearchButton>우편번호 검색</SearchButton>
         </ZipcodeWrapper>
-        <Address readOnly />
         <Address />
+        <Zonecode />
       </InputWrapper>
       <InputWrapper>
         <Label>유튜브</Label>
-        <Youtube placeholder="링크를 복사해주세요." />
+        <Youtube
+          placeholder="링크를 복사해주세요."
+          onChange={props.onChangeMyYoutube}
+          defaultValue={props.data?.fetchBoard.youtubeUrl}
+        />
       </InputWrapper>
       <ImageWrapper>
         <Label>사진첨부</Label>

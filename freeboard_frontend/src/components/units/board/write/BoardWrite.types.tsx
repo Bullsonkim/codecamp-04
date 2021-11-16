@@ -14,6 +14,7 @@ export interface IBoardWritestylesProps {
 export interface IMyUpdateBoardInput {
   title?: string;
   contents?: string;
+  youtubeUrl?: string;
 }
 
 export interface IBoardWriteUIProps {
@@ -30,7 +31,9 @@ export interface IBoardWriteUIProps {
   onChangeMyContents: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   onClickSubmit: (event: MouseEvent<HTMLButtonElement>) => void;
   onClickUpdate: (event: MouseEvent<HTMLButtonElement>) => void;
+  onChangeMyYoutube: (event: ChangeEvent<HTMLInputElement>) => void;
   data?: any;
+  onToggleModal: any;
 }
 
 export interface IBoardpresenterProps {

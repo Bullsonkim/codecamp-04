@@ -6,6 +6,6 @@ const MyIcon = styled(ForwardOutlined)`
   color: red;
 `;
 export default function LibararyIconPage() {
-  //   return <MyIcon onClick={onClicekLike}/>;
+  // return <MyIcon onClick={onClicekLike}/>;
   //   라우터쿼리 보드 아이디에서 불러서 사용
 }
