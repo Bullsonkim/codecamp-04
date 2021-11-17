@@ -143,4 +143,7 @@ export const DisLikeCount = styled.div`
   color: red;
 `;
 
-export const Youtube = styled.div``;
+export const WrapperYoutube = styled.div`
+  width: 80%;
+  padding-left: 220px;
+`;

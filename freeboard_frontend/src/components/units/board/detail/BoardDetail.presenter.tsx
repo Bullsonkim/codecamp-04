@@ -22,13 +22,13 @@ export default function BoardDetailUI(props) {
           <S.Title>{props.data?.fetchBoard.title}</S.Title>
           <hr />
           <S.Contents>{props.data?.fetchBoard.contents}</S.Contents>
-          <S.Youtube>
+          <S.WrapperYoutube>
             <ReactPlayer
               url={props.data?.fetchBoard.youtubeUrl}
               width="468px"
               height="240px"
             />
-          </S.Youtube>
+          </S.WrapperYoutube>
         </S.Body>
         <S.IconWrapper>
           <S.LikeWrapper>
