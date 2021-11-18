@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 
-export const Banner = styled.div`
-  width: 1920px;
-  height: 400px;
+export const Header = styled.div`
+  height: 500px;
   background-color: skyblue;
 `;

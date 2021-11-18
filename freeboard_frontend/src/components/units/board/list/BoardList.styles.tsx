@@ -142,3 +142,19 @@ export const BestTitle = styled.div`
   font-size: 18px;
   font-weight: bold;
 `;
+
+export const PageWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
+
+export const Pagelist = styled.div`
+  font-size: 15px;
+`;
+
+export const NextPage = styled.div``;
+
+export const PrevPage = styled.div``;
+
+export const PageNum = styled.div``;

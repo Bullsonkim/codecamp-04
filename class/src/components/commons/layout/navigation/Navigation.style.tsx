@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 
 export const Navigation = styled.div`
-  height: 64px;
-  width: 1920px;
-  background-color: lightgray;
+  height: 500px;
+  background-color: yellow;
 `;

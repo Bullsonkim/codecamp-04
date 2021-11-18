@@ -316,6 +316,7 @@ export type IQuery = {
   fetchUseditemsISold: Array<IUseditem>;
   fetchUseditemsOfTheBest: Array<IUseditem>;
   fetchUserLoggedIn: IUser;
+  IQueryFetchBoardsArgs: any;
 };
 
 export type IQueryFetchBoardArgs = {
