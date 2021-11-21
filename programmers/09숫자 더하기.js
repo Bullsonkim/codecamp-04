@@ -11,4 +11,5 @@ function sum(num) {
 	for( let i = 1; i <= num; i = i + 1 ) {
 		count = count + i;
   }
+  return
 }

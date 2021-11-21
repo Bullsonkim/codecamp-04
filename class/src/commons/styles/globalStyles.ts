@@ -16,4 +16,4 @@ export const globalStyles = css`
   //폰트 불러오기
 `;
 
-//모든 컴포넌트에 적용되는 스타일
+

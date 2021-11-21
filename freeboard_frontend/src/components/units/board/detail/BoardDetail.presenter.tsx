@@ -2,8 +2,9 @@ import React from "react";
 import * as S from "./BoardDetail.styles";
 import ReactDOM from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faCommentAlt } from "@fortawesome/free-solid-svg-icons";
 import ReactPlayer from "react-player/youtube";
+import { getDate } from "../../../../commons/libraries/utils";
 
 export default function BoardDetailUI(props) {
   return (
@@ -11,16 +12,18 @@ export default function BoardDetailUI(props) {
       <S.CardWrapper>
         <S.Header>
           <S.AvatarWrapper>
-            <FontAwesomeIcon icon={faUser} size="3x" />
+            <FontAwesomeIcon icon={faCommentAlt} flip="horizontal" size="3x" />
             <S.Info>
               <S.Writer>{props.data?.fetchBoard.writer}</S.Writer>
-              <S.CreatedAt>{props.data?.fetchBoard.createdAt}</S.CreatedAt>
+              <S.CreatedAt>
+                {getDate(props.data?.fetchBoard.createdAt)}
+              </S.CreatedAt>
             </S.Info>
           </S.AvatarWrapper>
         </S.Header>
         <S.Body>
           <S.Title>{props.data?.fetchBoard.title}</S.Title>
-          <hr />
+
           <S.Contents>{props.data?.fetchBoard.contents}</S.Contents>
           <S.WrapperYoutube>
             <ReactPlayer

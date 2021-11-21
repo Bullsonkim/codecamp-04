@@ -25,26 +25,35 @@ import {
   UpdateIcon,
   Writer,
   PasswordInput,
+  BackgroundWrapper,
 } from "./BoardCommentList.styles";
 import { IBoardCommentListUIItemProps } from "./BoardCommentList.types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCommentDots,
+  faTrashAlt,
+  faEdit,
+} from "@fortawesome/free-solid-svg-icons";
+import { getDate } from "../../../../commons/libraries/utils";
 
 export default function BoardCommentListUIItem(
   props: IBoardCommentListUIItemProps
 ) {
   const router = useRouter();
   const [isEdit, setIsEdit] = useState(false);
-  const [deleteBoardComment] =
-    useMutation<
-      Pick<IMutation, "deleteBoardComment">,
-      IMutationDeleteBoardCommentArgs
-    >(DELETE_BOARD_COMMENT);
+  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
+  const [myPassword, setMyPassword] = useState("");
+
+  const [deleteBoardComment] = useMutation<
+    Pick<IMutation, "deleteBoardComment">,
+    IMutationDeleteBoardCommentArgs
+  >(DELETE_BOARD_COMMENT);
 
   function onClickUpdate() {
     setIsEdit(true);
   }
 
   async function onClickDelete() {
-    const myPassword = prompt("비밀번호를 입력하세요.");
     try {
       await deleteBoardComment({
         variables: {
@@ -59,43 +68,56 @@ export default function BoardCommentListUIItem(
         ],
       });
     } catch (error) {
-      alert(error.message);
+      Modal.error({ content: error.message });
     }
   }
 
+  function onClickOpenDeleteModal() {
+    setIsOpenDeleteModal(true);
+  }
+
+  function onChangeDeletePassword(event: ChangeEvent<HTMLInputElement>) {
+    setMyPassword(event.target.value);
+  }
+
   return (
-    <>
+    <BackgroundWrapper>
+      {isOpenDeleteModal && (
+        <Modal visible={true} onOk={onClickDelete}>
+          <div>비밀번호 입력: </div>
+          <PasswordInput type="password" onChange={onChangeDeletePassword} />
+        </Modal>
+      )}
       {!isEdit && (
         <ItemWrapper>
           <FlexWrapper>
-            <Avatar src="/images/avatar.png" />
+            <FontAwesomeIcon icon={faCommentDots} size="3x" flip="horizontal" />
             <MainWrapper>
               <WriterWrapper>
                 <Writer>{props.el?.writer}</Writer>
+                <Star value={props.el?.rating} disabled />
               </WriterWrapper>
               <Contents>{props.el?.contents}</Contents>
             </MainWrapper>
             <OptionWrapper>
-              <UpdateIcon
-                src="/images/boardComment/list/option_update_icon.png/"
+              <FontAwesomeIcon
+                icon={faEdit}
                 onClick={onClickUpdate}
+                size="2x"
               />
-              <DeleteIcon
-                src="/images/boardComment/list/option_delete_icon.png/"
-                onClick={onClickDelete}
+              <FontAwesomeIcon
+                icon={faTrashAlt}
+                onClick={onClickOpenDeleteModal}
+                size="2x"
               />
             </OptionWrapper>
           </FlexWrapper>
-          <DateString>{props.el?.createdAt}</DateString>
+          <DateString>{getDate(props.el?.createdAt)}</DateString>
         </ItemWrapper>
       )}
       {isEdit && (
-        <BoardCommentWrite
-          isEdit={isEdit}
-          setIsEdit={setIsEdit}
-          el={props.el}
-        />
+        <BoardCommentWrite isEdit={true} setIsEdit={setIsEdit} el={props.el} />
       )}
-    </>
+    </BackgroundWrapper>
   );
 }

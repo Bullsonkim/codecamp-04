@@ -6,19 +6,23 @@ import {
   ContentsWrapper,
   Input,
   InputWrapper,
-  PencilIcon,
   Wrapper,
+  WrapperTop,
+  Title,
 } from "./BoardCommentWrite.styles";
 import { IBoardCommentWriteUIProps } from "./BoardCommentWrite.types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faComment } from "@fortawesome/free-solid-svg-icons";
+import { Rate } from "antd";
 
 export default function BoardCommentWriteUI(props: IBoardCommentWriteUIProps) {
   return (
     <Wrapper>
       {!props.isEdit && (
-        <>
-          <PencilIcon />
-          <span>댓글</span>
-        </>
+        <WrapperTop>
+          <FontAwesomeIcon icon={faComment} size="3x" flip="horizontal" />
+          <Title>댓글</Title>
+        </WrapperTop>
       )}
       <InputWrapper>
         <Input
@@ -32,6 +36,8 @@ export default function BoardCommentWriteUI(props: IBoardCommentWriteUIProps) {
           placeholder="비밀번호"
           onChange={props.onChangeMyPassword}
         />
+
+        <Rate onChange={props.starChange} value={props.star} />
       </InputWrapper>
       <ContentsWrapper>
         <Contents

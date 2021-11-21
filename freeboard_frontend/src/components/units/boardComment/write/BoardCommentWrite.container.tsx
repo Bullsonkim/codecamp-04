@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, SetStateAction } from "react";
 import {
   IMutation,
   IMutationCreateBoardCommentArgs,
@@ -22,6 +22,7 @@ export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
   const [myWriter, setMyWriter] = useState("");
   const [myPassword, setMyPassword] = useState("");
   const [myContents, setMyContents] = useState("");
+  const [star, setStar] = useState(3);
 
   const [createBoardComment] = useMutation<
     Pick<IMutation, "createBoardComment">,
@@ -44,6 +45,10 @@ export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
     setMyContents(event.target.value);
   }
 
+  function starChange(star: SetStateAction<number>) {
+    setStar(star);
+  }
+
   async function onClickWrite() {
     try {
       await createBoardComment({
@@ -52,7 +57,7 @@ export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
             writer: myWriter,
             password: myPassword,
             contents: myContents,
-            rating: 0,
+            rating: star,
           },
           boardId: String(router.query.boardId),
         },
@@ -109,6 +114,8 @@ export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
       isEdit={props.isEdit}
       el={props.el}
       myContents={myContents}
+      starChange={starChange}
+      star={star}
     />
   );
 }

@@ -1,4 +1,5 @@
 import { ChangeEvent, MouseEvent } from "react";
+import { IQuery } from "../../../../commons/types/generated/types"
 
 export interface IBoardWriteProps {
   data?: any;
@@ -15,7 +16,11 @@ export interface IMyUpdateBoardInput {
   title?: string;
   contents?: string;
   youtubeUrl?: string;
-}
+  boardAddress?: {
+    zipcode?: string;
+    address?: string;
+    addressDetail?: string;
+};
 
 export interface IBoardWriteUIProps {
   isEdit?: boolean;
@@ -34,6 +39,13 @@ export interface IBoardWriteUIProps {
   onChangeMyYoutube: (event: ChangeEvent<HTMLInputElement>) => void;
   data?: any;
   onToggleModal: any;
+  zipcode: string;
+  address: string;
+  addressDetail: string;
+  onClickAddressSearch: (event: MouseEvent<HTMLButtonElement>) => void;
+  isOpen?:boolean;
+  onCompleteAddressSearch: any;
+  onChangeAddressDetail: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface IBoardpresenterProps {

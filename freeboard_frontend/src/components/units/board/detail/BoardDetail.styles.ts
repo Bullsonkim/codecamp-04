@@ -36,7 +36,7 @@ export const AvatarWrapper = styled.div`
   display: flex;
   flex-direction: row;
   border: none;
-  background-color: yellow;
+  background-color: #fef01b;
   box-shadow: 0px 0px 10px gray;
   border-radius: 10px;
   padding-top: 20px;
@@ -66,12 +66,16 @@ export const Body = styled.div`
   background: white;
   border-radius: 15px;
   padding-left: 50px;
+  padding-right: 50px;
 `;
 
 export const Title = styled.h1`
   padding-top: 80px;
   padding-left: 20px;
+  padding-right: 20px;
   font-size: 40px;
+  line-height: 52px;
+  border-bottom: 1px solid gray;
 `;
 
 export const Contents = styled.div`

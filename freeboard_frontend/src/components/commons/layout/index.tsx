@@ -13,7 +13,7 @@ const BodyWrapper = styled.div`
 const Sidebar = styled.div`
   width: 200px;
   height: 700px;
-  background-color: blue;
+  background-color: white;
 `;
 const HIDDEN_HEADERS = ["/12-05-modal-address-stateprev"];
 interface ILayoutProps {
@@ -31,7 +31,7 @@ export default function Layout(props: ILayoutProps) {
       <Banner />
       <Navigation />
       <BodyWrapper>
-        <Sidebar>sidebar!!!</Sidebar>
+        <Sidebar></Sidebar>
         <Body>{props.children}</Body>
       </BodyWrapper>
       <Footer />

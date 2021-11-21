@@ -5,6 +5,7 @@ export interface IBoardCommentWriteProps {
   isEdit?: boolean;
   setIsEdit?: Dispatch<SetStateAction<boolean>>;
   el?: IBoardComment;
+  handleChagne?: any;
 }
 
 export interface IBoardCommentWriteUIProps {
@@ -16,4 +17,6 @@ export interface IBoardCommentWriteUIProps {
   isEdit?: boolean;
   el?: IBoardComment;
   myContents: string;
+  starChange: any;
+  star: any;
 }

@@ -41,7 +41,9 @@ export default function BoardListUI(props) {
 
             <WrapperGroup>
               <WrapperLeft>
-                <BestTitle>{el.title}</BestTitle>
+                <BestTitle onClick={props.onClickMoveToBoardDetail}>
+                  {el.title}
+                </BestTitle>
                 <BestWriter>{el.writer}</BestWriter>
                 <BestDate>{getDate(el.createdAt)}</BestDate>
               </WrapperLeft>

@@ -36,11 +36,15 @@ export const TextToken = styled.span`
 export const ColumnHeaderBasic = styled.div`
   width: 10%;
   text-align: center;
+  font-weight: bold;
+  font-size: 20px;
 `;
 
 export const ColumnHeaderTitle = styled.div`
   width: 70%;
   text-align: center;
+  font-weight: bold;
+  font-size: 20px;
 `;
 
 export const ColumnBasic = styled.div`

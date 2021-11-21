@@ -13,6 +13,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const [myTitle, setMyTitle] = useState("");
   const [myContents, setMyContents] = useState("");
   const [myYoutube, setMyYoutbe] = useState("");
+  const [zipcode, setZipcode] = useState("");
+  const [address, setAddress] = useState("");
+  const [addressDetail, setAddressDetail] = useState("");
 
   const [myWriterError, setMyWriterError] = useState("");
   const [myPasswordError, setMyPasswordError] = useState("");
@@ -20,6 +23,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const [myContentsError, setMyContentsError] = useState("");
 
   const [isActive, setIsActive] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const [createBoard] = useMutation(CREATE_BOARD);
   const [updateBoard] = useMutation(UPDATE_BOARD);
@@ -95,8 +99,23 @@ export default function BoardWrite(props: IBoardWriteProps) {
       }
     }
   }
+
   function onChangeMyYoutube(event: ChangeEvent<HTMLTextAreaElement>) {
     setMyYoutbe(event.target.value);
+  }
+
+  function onChangeAddressDetail(event: ChangeEvent<HTMLInputElement>) {
+    setAddressDetail(event.target.value);
+  }
+
+  function onCompleteAddressSearch(data: any) {
+    setAddress(data.address);
+    setZipcode(data.zonecode);
+    setIsOpen(false);
+  }
+
+  function onClickAddressSearchrch() {
+    setIsOpen(true);
   }
 
   async function onClickSubmit() {
@@ -121,6 +140,11 @@ export default function BoardWrite(props: IBoardWriteProps) {
             title: myTitle,
             contents: myContents,
             youtubeUrl: myYoutube,
+            boardAddress: {
+              zipcode: zipcode,
+              address: address,
+              addressDetail: addressDetail,
+            },
           },
         },
       });
@@ -129,7 +153,14 @@ export default function BoardWrite(props: IBoardWriteProps) {
   }
 
   async function onClickUpdate() {
-    if (!myTitle && !myContents && !myYoutube) {
+    if (
+      !myTitle &&
+      !myContents &&
+      !myYoutube &&
+      !address &&
+      !addressDetail &&
+      !zipcode
+    ) {
       alert("수정된 내용이 없습니다.");
       return;
     }
@@ -138,7 +169,13 @@ export default function BoardWrite(props: IBoardWriteProps) {
     if (myTitle) myUpdateboardInput.title = myTitle;
     if (myContents) myUpdateboardInput.contents = myContents;
     if (myYoutube) myUpdateboardInput.youtubeUrl = myYoutube;
-
+    if (zipcode || address || addressDetail) {
+      myUpdateboardInput.boardAddress = {};
+      if (zipcode) myUpdateboardInput.boardAddress.zipcode = zipcode;
+      if (address) myUpdateboardInput.boardAddress.address = address;
+      if (addressDetail)
+        myUpdateboardInput.boardAddress.addressDetail = addressDetail;
+    }
     try {
       await updateBoard({
         variables: {
@@ -166,9 +203,16 @@ export default function BoardWrite(props: IBoardWriteProps) {
       onChangeMyYoutube={onChangeMyYoutube}
       onClickSubmit={onClickSubmit}
       onClickUpdate={onClickUpdate}
+      onChangeAddressDetail={onChangeAddressDetail}
+      onClickAddressSearch={onClickAddressSearchrch}
+      onCompleteAddressSearch={onCompleteAddressSearch}
       isActive={isActive}
       isEdit={props.isEdit}
       data={props.data}
+      zipcode={zipcode}
+      address={address}
+      addressDetail={addressDetail}
+      isOpen={isOpen}
     />
   );
 }
