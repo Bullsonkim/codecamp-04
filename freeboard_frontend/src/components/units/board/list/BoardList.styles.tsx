@@ -2,8 +2,8 @@ import { IBoardListStylesProps } from "./BoardWrite.types";
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  width: 1200px;
-  margin: 100px;
+  width: 100%;
+  margin: 40px;
   text-align: center;
 `;
 
@@ -91,9 +91,10 @@ export const WrapperBest = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   padding-top: 50px;
   padding-bottom: 50px;
+  overflow: hidden;
 `;
 
 export const Bestbackground = styled.div`
@@ -120,6 +121,7 @@ export const WrapperGroup = styled.div`
   align-items: flex-end;
   justify-content: space-between;
   height: 80px;
+  overflow: auto;
 `;
 
 export const WrapperLeft = styled.div`

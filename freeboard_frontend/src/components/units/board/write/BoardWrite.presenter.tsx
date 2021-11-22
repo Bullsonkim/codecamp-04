@@ -32,7 +32,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
     <>
       {props.isOpen && (
         <Modal visible={true}>
-          <DaumPostcode onComplete={props.onCompleteAddressSearch} />
+          <DaumPostcode onComplete={props.onCompleteAddressSearch} />;
         </Modal>
       )}
 

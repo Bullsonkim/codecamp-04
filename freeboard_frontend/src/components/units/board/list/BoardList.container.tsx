@@ -24,7 +24,6 @@ export default function BoardList() {
   function onClickMoveToBoardDetail(event) {
     router.push(`/boards/${event.target.id}`);
   }
-  //
 
   const [startPage, setStartPage] = useState(1);
 

@@ -46,6 +46,7 @@ export interface IBoardWriteUIProps {
   isOpen?:boolean;
   onCompleteAddressSearch: any;
   onChangeAddressDetail: (event: ChangeEvent<HTMLInputElement>) => void;
+  onCloseAddressSearch: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
 export interface IBoardpresenterProps {

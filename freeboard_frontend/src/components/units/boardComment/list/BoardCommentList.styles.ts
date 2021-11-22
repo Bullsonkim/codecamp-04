@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { Rate } from "antd";
 
 export const BackgroundWrapper = styled.div`
-  padding-left: 50px;
+  margin: 70px;
 `;
 
 export const ItemWrapper = styled.div`
@@ -31,7 +31,7 @@ export const MainWrapper = styled.div`
   padding-left: 10px;
 `;
 export const WriterWrapper = styled.div`
-  width: 200px;
+  width: 300px;
   display: flex;
   flex-direction: row;
   align-items: center;

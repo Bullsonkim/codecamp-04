@@ -16,7 +16,7 @@ export const Title = styled.div`
 
 export const Wrapper = styled.div`
   width: 1200px;
-  margin: 100px;
+  margin: 110px;
   background-color: #b2c7d9;
   border-radius: 10px;
   box-shadow: 0px 4px 10px;

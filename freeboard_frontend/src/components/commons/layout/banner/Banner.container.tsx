@@ -28,13 +28,13 @@ export default function Banner() {
   return (
     <Slider {...settings}>
       <div>
-        <img src="/images/food1.jpg" alt="mydog" width="1920" height="500" />
+        <img src="/images/food1.jpg" alt="mydog" width="100%" height="500" />
       </div>
       <div>
-        <img src="/images/food2.jpg" alt="bono" width="1920" height="500" />
+        <img src="/images/food2.jpg" alt="bono" width="100%" height="500" />
       </div>
       <div>
-        <img src="/images/food3.jpg" alt="bono" width="1920" height="500" />
+        <img src="/images/food3.jpg" alt="bono" width="100%" height="500" />
       </div>
     </Slider>
   );

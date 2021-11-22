@@ -10,7 +10,7 @@ export const globalStyles = css`
 
   @font-face {
     font-family: "myFont";
-    src: url("/fonts/scifibit.ttf");
+    src: url("/fonts/야놀자 야체 Regular.ttf");
   }
 
   //폰트 불러오기
