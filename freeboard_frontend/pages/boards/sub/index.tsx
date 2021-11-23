@@ -6,9 +6,8 @@ export default function OpenapiWithUSeEffectPage() {
 
   useEffect(() => {
     async function fetchCoffee() {
-      const result: any = await axios.get(
-        "https://dog.ceo/api/breeds/image/random"
-      );
+      const result: any = await axios.get("https://forza-api.tk");
+      console.log("asdfasdf", result);
       // console.log(result);
       setcoffeeUrl(result.data.message);
     }

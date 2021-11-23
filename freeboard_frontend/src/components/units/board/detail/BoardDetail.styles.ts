@@ -150,4 +150,5 @@ export const DisLikeCount = styled.div`
 export const WrapperYoutube = styled.div`
   width: 80%;
   padding-left: 220px;
+  padding-top: 100px;
 `;
