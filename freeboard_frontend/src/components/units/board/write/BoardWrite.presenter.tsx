@@ -22,6 +22,7 @@ import {
   UploadButton,
   Error,
   Zonecode,
+  UploadButton1,
 } from "./BoardWrite.styles";
 import { IBoardWriteUIProps } from "./BoardWrite.types";
 import { Modal } from "antd";
@@ -76,6 +77,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
             onChange={props.onChangeMyContents}
             defaultValue={props.data?.fetchBoard.contents}
           />
+
           <Error>{props.myContentsError}</Error>
         </InputWrapper>
         <InputWrapper>
@@ -121,18 +123,15 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
         </InputWrapper>
         <ImageWrapper>
           <Label>사진첨부</Label>
-          <UploadButton>
-            <>+</>
-            <>Upload</>
-          </UploadButton>
-          <UploadButton>
-            <>+</>
-            <>Upload</>
-          </UploadButton>
-          <UploadButton>
-            <>+</>
-            <>Upload</>
-          </UploadButton>
+
+          <UploadButton
+            type="file"
+            onChange={props.onChangeFile}
+            ref={props.fileRef}
+          ></UploadButton>
+          <UploadButton1 onClick={props.onClickMyImage}></UploadButton1>
+
+          <UploadButton></UploadButton>
         </ImageWrapper>
         <OptionWrapper>
           <Label>메인설정</Label>

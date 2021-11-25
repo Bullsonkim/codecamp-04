@@ -16,6 +16,7 @@ export interface IMyUpdateBoardInput {
   title?: string;
   contents?: string;
   youtubeUrl?: string;
+  images?:any;
   boardAddress?: {
     zipcode?: string;
     address?: string;
@@ -47,6 +48,9 @@ export interface IBoardWriteUIProps {
   onCompleteAddressSearch: any;
   onChangeAddressDetail: (event: ChangeEvent<HTMLInputElement>) => void;
   onCloseAddressSearch: (event: MouseEvent<HTMLButtonElement>) => void;
+  onChangeFile: (event: ChangeEvent<HTMLInputElement>) => void;
+  fileRef: any;
+  onClickMyImage:any;
 }
 
 export interface IBoardpresenterProps {

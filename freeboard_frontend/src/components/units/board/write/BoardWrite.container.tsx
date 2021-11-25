@@ -1,6 +1,6 @@
 import BoardWriteUI from "./BoardWrite.presenter";
-import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
-import { ChangeEvent, useState } from "react";
+import { CREATE_BOARD, UPDATE_BOARD, UPLOAD_FILE } from "./BoardWrite.queries";
+import { ChangeEvent, useState, useRef } from "react";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { IBoardWriteProps, IMyUpdateBoardInput } from "./BoardWrite.types";
@@ -17,6 +17,10 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const [address, setAddress] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
 
+  //1111
+  const [myImages, setMyImages] = useState<string[]>([]);
+  const fileRef = useRef<HTMLInputElement>(null);
+
   const [myWriterError, setMyWriterError] = useState("");
   const [myPasswordError, setMyPasswordError] = useState("");
   const [myTitleError, setMyTitleError] = useState("");
@@ -27,6 +31,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
 
   const [createBoard] = useMutation(CREATE_BOARD);
   const [updateBoard] = useMutation(UPDATE_BOARD);
+  const [uploadFile] = useMutation(UPLOAD_FILE);
 
   function onChangeMyWriter(event: ChangeEvent<HTMLInputElement>) {
     setMyWriter(event.target.value);
@@ -118,6 +123,10 @@ export default function BoardWrite(props: IBoardWriteProps) {
     setIsOpen(true);
   }
 
+  function onClickMyImage() {
+    fileRef.current?.click();
+  }
+
   async function onClickSubmit() {
     if (!myWriter) {
       setMyWriterError("작성자를 입력해주세요.");
@@ -140,6 +149,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
             title: myTitle,
             contents: myContents,
             youtubeUrl: myYoutube,
+            images: myImages,
             boardAddress: {
               zipcode: zipcode,
               address: address,
@@ -159,7 +169,8 @@ export default function BoardWrite(props: IBoardWriteProps) {
       !myYoutube &&
       !address &&
       !addressDetail &&
-      !zipcode
+      !zipcode &&
+      !myImages
     ) {
       alert("수정된 내용이 없습니다.");
       return;
@@ -169,6 +180,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
     if (myTitle) myUpdateboardInput.title = myTitle;
     if (myContents) myUpdateboardInput.contents = myContents;
     if (myYoutube) myUpdateboardInput.youtubeUrl = myYoutube;
+    if (myImages) myUpdateboardInput.images = myImages;
     if (zipcode || address || addressDetail) {
       myUpdateboardInput.boardAddress = {};
       if (zipcode) myUpdateboardInput.boardAddress.zipcode = zipcode;
@@ -188,6 +200,35 @@ export default function BoardWrite(props: IBoardWriteProps) {
     } catch (error) {
       alert(error.message);
     }
+  }
+
+  async function onChangeFile(event: ChangeEvent<HTMLInputElement>) {
+    const myFile = event.target.files?.[0];
+    // files 배열이 있으면 배열 0번째를 가져옴
+    // 여러 이미지를 선택하는 경우가 있기때문에 배열 0 선언
+
+    if (!myFile?.size) {
+      alert("파일이 없습니다!!");
+      return;
+    }
+
+    if (myFile.size > 5 * 1024 * 1024) {
+      alert("파일 용량이 너무 큽니다!(용량제한:5MB)");
+      return;
+    }
+    // 5메가 용량 제한 기가는 5*1024*1024*1024
+
+    if (!myFile.type.includes("jpeg") && !myFile.type.includes("png")) {
+      alert("jpeg 또는 png만 업로드 가능합니다!!");
+      return;
+    }
+
+    const result = await uploadFile({
+      variables: {
+        file: myFile,
+      },
+    });
+    setMyImages([result.data.uploadFile.url]);
   }
 
   return (
@@ -213,6 +254,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
       address={address}
       addressDetail={addressDetail}
       isOpen={isOpen}
+      onChangeFile={onChangeFile}
+      fileRef={fileRef}
+      onClickMyImage={onClickMyImage}
     />
   );
 }

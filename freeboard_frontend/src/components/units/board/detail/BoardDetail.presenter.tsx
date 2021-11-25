@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentAlt } from "@fortawesome/free-solid-svg-icons";
 import ReactPlayer from "react-player/youtube";
 import { getDate } from "../../../../commons/libraries/utils";
+import { FETCH_BOARD } from "./BoardDetail.queries";
 
 export default function BoardDetailUI(props) {
   return (
@@ -24,7 +25,10 @@ export default function BoardDetailUI(props) {
         <S.Body>
           <S.Title>{props.data?.fetchBoard.title}</S.Title>
 
-          <S.Contents>{props.data?.fetchBoard.contents}</S.Contents>
+          <S.Contents>
+            {props.data?.fetchBoard.contents}
+            {props.data?.fetchBoard.images}
+          </S.Contents>
           <S.WrapperYoutube>
             <ReactPlayer
               url={props.data?.fetchBoard.youtubeUrl}
