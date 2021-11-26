@@ -152,3 +152,15 @@ export const WrapperYoutube = styled.div`
   padding-left: 220px;
   padding-top: 100px;
 `;
+
+export const ImageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const Image = styled.img`
+  width: 700px;
+  height: 300px;
+  margin-bottom: 50px;
+`;

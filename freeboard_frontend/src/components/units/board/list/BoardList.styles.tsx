@@ -95,6 +95,7 @@ export const WrapperBest = styled.div`
   padding-top: 50px;
   padding-bottom: 50px;
   overflow: hidden;
+  cursor: pointer;
 `;
 
 export const Bestbackground = styled.div`
@@ -121,7 +122,7 @@ export const WrapperGroup = styled.div`
   align-items: flex-end;
   justify-content: space-between;
   height: 80px;
-  overflow: auto;
+  text-overflow: ellipsis;
 `;
 
 export const WrapperLeft = styled.div`
@@ -129,7 +130,9 @@ export const WrapperLeft = styled.div`
   padding-left: 10px;
 `;
 
-export const BestWriter = styled.div``;
+export const BestWriter = styled.div`
+  cursor: pointer;
+`;
 
 export const LikePicture = styled.div``;
 

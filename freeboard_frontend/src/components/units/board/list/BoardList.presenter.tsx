@@ -29,8 +29,9 @@ import {
   PrevPage,
   PageNum,
 } from "./BoardList.styles";
+import { IBoardListUIProps } from "./BoardList.types";
 
-export default function BoardListUI(props) {
+export default function BoardListUI(props: IBoardListUIProps) {
   return (
     <Wrapper>
       <MyTitle>베스트 게시글 </MyTitle>
@@ -39,11 +40,9 @@ export default function BoardListUI(props) {
           <Bestbackground>
             <BestPicture>사진</BestPicture>
 
-            <WrapperGroup>
+            <WrapperGroup onClick={props.onClickMoveToBoardDetail}>
               <WrapperLeft>
-                <BestTitle onClick={props.onClickMoveToBoardDetail}>
-                  {el.title}
-                </BestTitle>
+                <BestTitle>{el.title}</BestTitle>
                 <BestWriter>{el.writer}</BestWriter>
                 <BestDate>{getDate(el.createdAt)}</BestDate>
               </WrapperLeft>
@@ -102,7 +101,7 @@ export default function BoardListUI(props) {
         )}
 
         <NextPage
-          onClick={props.onClickNextPage}
+          onClick={props.onClickPrevPage}
           style={{ margin: "10px", cursor: "pointer" }}
         >
           ▶️

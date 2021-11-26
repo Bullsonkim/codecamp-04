@@ -17,6 +17,8 @@ export default class Board extends BaseEntity {
     @Column({type:"integer"})
     age!: number;
 
+    @Column({type:"timestamp", default:null, nullable:true})
+    deletedAt!: Date;
 }
-
 //uuid / sting
+//시간이 입력되면 삭제된것을 의미 /빈칸허용 nullable

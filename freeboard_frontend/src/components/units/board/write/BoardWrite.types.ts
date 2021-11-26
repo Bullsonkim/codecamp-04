@@ -1,5 +1,5 @@
 import { ChangeEvent, MouseEvent } from "react";
-import { IQuery } from "../../../../commons/types/generated/types"
+import { IQuery } from "../../../../commons/types/generated/types";
 
 export interface IBoardWriteProps {
   data?: any;
@@ -16,14 +16,17 @@ export interface IMyUpdateBoardInput {
   title?: string;
   contents?: string;
   youtubeUrl?: string;
-  images?:any;
+  images?: any;
   boardAddress?: {
     zipcode?: string;
     address?: string;
     addressDetail?: string;
-};
+  };
+}
 
 export interface IBoardWriteUIProps {
+  onChangeFileUrls: (fileUrl: string, index: number) => void;
+  fileUrls: string[];
   isEdit?: boolean;
   isActive?: boolean;
   isedt?: boolean;
@@ -44,13 +47,14 @@ export interface IBoardWriteUIProps {
   address: string;
   addressDetail: string;
   onClickAddressSearch: (event: MouseEvent<HTMLButtonElement>) => void;
-  isOpen?:boolean;
+  isOpen?: boolean;
   onCompleteAddressSearch: any;
   onChangeAddressDetail: (event: ChangeEvent<HTMLInputElement>) => void;
   onCloseAddressSearch: (event: MouseEvent<HTMLButtonElement>) => void;
   onChangeFile: (event: ChangeEvent<HTMLInputElement>) => void;
-  fileRef: any;
-  onClickMyImage:any;
+  onClickMyImage: any;
+  index: number;
+  el: string;
 }
 
 export interface IBoardpresenterProps {

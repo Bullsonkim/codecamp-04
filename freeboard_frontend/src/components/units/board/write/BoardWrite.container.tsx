@@ -16,10 +16,10 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const [zipcode, setZipcode] = useState("");
   const [address, setAddress] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
+  const [fileUrls, setFileUrls] = useState(["", "", ""]);
 
   //1111
   const [myImages, setMyImages] = useState<string[]>([]);
-  const fileRef = useRef<HTMLInputElement>(null);
 
   const [myWriterError, setMyWriterError] = useState("");
   const [myPasswordError, setMyPasswordError] = useState("");
@@ -149,7 +149,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
             title: myTitle,
             contents: myContents,
             youtubeUrl: myYoutube,
-            images: myImages,
+            images: fileUrls,
             boardAddress: {
               zipcode: zipcode,
               address: address,
@@ -202,33 +202,10 @@ export default function BoardWrite(props: IBoardWriteProps) {
     }
   }
 
-  async function onChangeFile(event: ChangeEvent<HTMLInputElement>) {
-    const myFile = event.target.files?.[0];
-    // files 배열이 있으면 배열 0번째를 가져옴
-    // 여러 이미지를 선택하는 경우가 있기때문에 배열 0 선언
-
-    if (!myFile?.size) {
-      alert("파일이 없습니다!!");
-      return;
-    }
-
-    if (myFile.size > 5 * 1024 * 1024) {
-      alert("파일 용량이 너무 큽니다!(용량제한:5MB)");
-      return;
-    }
-    // 5메가 용량 제한 기가는 5*1024*1024*1024
-
-    if (!myFile.type.includes("jpeg") && !myFile.type.includes("png")) {
-      alert("jpeg 또는 png만 업로드 가능합니다!!");
-      return;
-    }
-
-    const result = await uploadFile({
-      variables: {
-        file: myFile,
-      },
-    });
-    setMyImages([result.data.uploadFile.url]);
+  function onChangeFileUrls(fileUrl: string, index: number) {
+    const newFileUrls = [...fileUrls];
+    newFileUrls[index] = fileUrl;
+    setFileUrls(newFileUrls);
   }
 
   return (
@@ -254,9 +231,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
       address={address}
       addressDetail={addressDetail}
       isOpen={isOpen}
-      onChangeFile={onChangeFile}
-      fileRef={fileRef}
       onClickMyImage={onClickMyImage}
+      fileUrls={fileUrls}
+      onChangeFileUrls={onChangeFileUrls}
     />
   );
 }

@@ -32,3 +32,17 @@ export const DISLIKE_BOARD = gql`
     dislikeBoard(boardId: $boardId)
   }
 `;
+
+export const BEST_BOARDS = gql`
+  query {
+    fetchBoardsOfTheBest {
+      writer
+      title
+      contents
+      createdAt
+      likeCount
+      dislikeCount
+      youtubeUrl
+      images
+  }
+`;

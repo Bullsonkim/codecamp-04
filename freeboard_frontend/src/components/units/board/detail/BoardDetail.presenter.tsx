@@ -1,13 +1,12 @@
 import React from "react";
 import * as S from "./BoardDetail.styles";
-import ReactDOM from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentAlt } from "@fortawesome/free-solid-svg-icons";
 import ReactPlayer from "react-player/youtube";
 import { getDate } from "../../../../commons/libraries/utils";
-import { FETCH_BOARD } from "./BoardDetail.queries";
+import { IBoardDetailUIProps } from "./BoardDetail.types";
 
-export default function BoardDetailUI(props) {
+export default function BoardDetailUI(props: IBoardDetailUIProps) {
   return (
     <S.Wrapper>
       <S.CardWrapper>
@@ -24,11 +23,18 @@ export default function BoardDetailUI(props) {
         </S.Header>
         <S.Body>
           <S.Title>{props.data?.fetchBoard.title}</S.Title>
+          <S.ImageWrapper>
+            {props.data?.fetchBoard.images
+              ?.filter((el: string) => el)
+              .map((el: string) => (
+                <S.Image
+                  key={el}
+                  src={`https://storage.googleapis.com/${el}`}
+                />
+              ))}
+          </S.ImageWrapper>
 
-          <S.Contents>
-            {props.data?.fetchBoard.contents}
-            {props.data?.fetchBoard.images}
-          </S.Contents>
+          <S.Contents>{props.data?.fetchBoard.contents}</S.Contents>
           <S.WrapperYoutube>
             <ReactPlayer
               url={props.data?.fetchBoard.youtubeUrl}
