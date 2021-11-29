@@ -1,4 +1,4 @@
-import { IBoardListStylesProps } from "./BoardWrite.types";
+import { IBoardListStylesProps, ITextTokenProps } from "./BoardList.types";
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
@@ -28,11 +28,6 @@ export const Row = styled.div`
   }
 `;
 
-export const TextToken = styled.span`
-  color: ${(props: IBoardListStylesProps) =>
-    props.isMatched ? "red" : "black"};
-`;
-
 export const ColumnHeaderBasic = styled.div`
   width: 10%;
   text-align: center;
@@ -56,6 +51,8 @@ export const ColumnTitle = styled.div`
   width: 70%;
   text-align: center;
   cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
 
   :hover {
     color: blue;
@@ -167,3 +164,13 @@ export const NextPage = styled.div``;
 export const PrevPage = styled.div``;
 
 export const PageNum = styled.div``;
+
+export const Search = styled.input`
+  margin: 10px;
+  width: 1000px;
+  height: 50px;
+  border-radius: 10px;
+`;
+export const TextToken = styled.span`
+  color: ${(props: ITextTokenProps) => (props.isMatched ? "red" : "black")};
+`;

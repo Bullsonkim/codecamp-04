@@ -10,19 +10,22 @@ import { useState, MouseEvent } from "react";
 import {
   IQuery,
   IQueryFetchBoardsArgs,
+  IQueryFetchBoardsCountArgs,
 } from "../../../../commons/types/generated/types";
 
 export default function BoardList() {
   const router = useRouter();
   // const { data } = useQuery(FETCH_BOARDS);
+  const [keyword, setKeyword] = useState("");
   const { data: bestdata } = useQuery(BEST_BOARDS);
 
   function onClickMoveToBoardNew() {
     router.push("/boards/new");
   }
 
-  function onClickMoveToBoardDetail(event) {
-    router.push(`/boards/${event.target.id}`);
+  function onClickMoveToBoardDetail(event: MouseEvent<HTMLDivElement>) {
+    if (event.target instanceof Element)
+      router.push(`/boards/${event.target.id}`);
   }
 
   const [startPage, setStartPage] = useState(1);
@@ -32,13 +35,18 @@ export default function BoardList() {
     IQueryFetchBoardsArgs
   >(FETCH_BOARDS, { variables: { page: startPage } });
 
-  const { data: dataBoardsCount } =
-    useQuery<Pick<IQuery, "fetchBoardsCount">>(FETCH_BOARDS_COUNT);
+  // const { data: `dataBoardsCount` } =
+  //   useQuery<Pick<IQuery, "fetchBoardsCount">>(FETCH_BOARDS_COUNT);
 
   const lastPage = dataBoardsCount
     ? Math.ceil(dataBoardsCount.fetchBoardsCount / 10)
     : 0;
   // 마지막 페이지 구하기
+
+  const { data: dataBoardsCount, refetch: refetchBoardsCount } = useQuery<
+    Pick<IQuery, "fetchBoardsCount">,
+    IQueryFetchBoardsCountArgs
+  >(FETCH_BOARDS_COUNT);
 
   function onClickPage(event: MouseEvent<HTMLSpanElement>) {
     if (event.target instanceof Element)
@@ -56,6 +64,10 @@ export default function BoardList() {
     setStartPage((prev) => prev + 10);
   }
 
+  function onChangeKeyword(value: string) {
+    setKeyword(value);
+  }
+
   return (
     <BoardListUI
       bestdata={bestdata}
@@ -68,6 +80,11 @@ export default function BoardList() {
       dataBoardsCount={dataBoardsCount}
       startPage={startPage}
       lastPage={lastPage}
+      onChangeKeyword={onChangeKeyword}
+      keyword={keyword}
+      refetch={refetch}
+      refetchBoardsCount={refetchBoardsCount}
+      count={dataBoardsCount?.fetchBoardsCount}
     />
   );
 }

@@ -32,3 +32,8 @@ export const Dessert = styled.div`
   color: white;
   font-size: 40px;
 `;
+
+export const Visitor = styled.div`
+  color: white;
+  font-size: 40px;
+`;

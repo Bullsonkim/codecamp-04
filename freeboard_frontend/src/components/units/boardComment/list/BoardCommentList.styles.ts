@@ -58,12 +58,10 @@ export const OptionWrapper = styled.div`
 export const UpdateIcon = styled.img`
   width: 24px;
   height: 24px;
-  cursor: pointer;
 `;
 export const DeleteIcon = styled.img`
   width: 24px;
   height: 24px;
-  cursor: pointer;
 `;
 
 export const DateString = styled.div`
@@ -80,5 +78,3 @@ export const PasswordInput = styled.input`
   width: 100%;
   margin-top: 10px;
 `;
-
-export const InfiniteScroll = styled.div``;

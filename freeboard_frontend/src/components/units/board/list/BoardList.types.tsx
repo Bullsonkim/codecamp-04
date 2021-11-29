@@ -3,6 +3,7 @@ import { Dispatch, MouseEvent, MouseEventHandler, SetStateAction } from "react";
 import {
   IQuery,
   IQueryFetchBoardsArgs,
+  IQueryFetchBoardsCountArgs,
 } from "../../../../commons/types/generated/types";
 
 export interface IBoardListStylesProps {
@@ -10,6 +11,7 @@ export interface IBoardListStylesProps {
 }
 
 export interface IBoardListUIProps {
+  keyword: string;
   pagedata: any;
   lastPage: number;
   onClickPage: MouseEventHandler<HTMLDivElement>;
@@ -24,4 +26,12 @@ export interface IBoardListUIProps {
   count?: number;
   startPage: number;
   setStartPage: Dispatch<SetStateAction<number>>;
+  refetchBoardsCount: (
+    variables: Partial<IQueryFetchBoardsCountArgs>
+  ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoardsCount">>>;
+  onChangeKeyword: (value: string) => void;
+}
+
+export interface ITextTokenProps {
+  isMatched: boolean;
 }

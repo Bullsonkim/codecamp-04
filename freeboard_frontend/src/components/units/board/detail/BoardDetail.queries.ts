@@ -44,5 +44,6 @@ export const BEST_BOARDS = gql`
       dislikeCount
       youtubeUrl
       images
+    }
   }
 `;

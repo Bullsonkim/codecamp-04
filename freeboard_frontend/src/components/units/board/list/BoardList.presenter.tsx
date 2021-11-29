@@ -28,8 +28,11 @@ import {
   NextPage,
   PrevPage,
   PageNum,
+  TextToken,
 } from "./BoardList.styles";
 import { IBoardListUIProps } from "./BoardList.types";
+import { v4 as uuidv4 } from "uuid";
+import SearchBar from "../../../commons/search/Search.container";
 
 export default function BoardListUI(props: IBoardListUIProps) {
   return (
@@ -65,13 +68,27 @@ export default function BoardListUI(props: IBoardListUIProps) {
         <Row key={el._id}>
           <ColumnBasic>{index + 1}</ColumnBasic>
           <ColumnTitle id={el._id} onClick={props.onClickMoveToBoardDetail}>
-            {el.title}
+            {el.title
+              .replaceAll(props.keyword, `!@#${props.keyword}!@#`)
+              .split("!@#")
+              .map((el) => (
+                <TextToken key={uuidv4()} isMatched={props.keyword === el}>
+                  {el}
+                </TextToken>
+              ))}
           </ColumnTitle>
           <ColumnBasic>{el.writer}</ColumnBasic>
           <ColumnBasic>{getDate(el.createdAt)}</ColumnBasic>
         </Row>
       ))}
       <TableBottom />
+
+      <SearchBar
+        refetch={props.refetch}
+        refetchBoardsCount={props.refetchBoardsCount}
+        onChangeKeyword={props.onChangeKeyword}
+      />
+
       <Footer>
         <Button onClick={props.onClickMoveToBoardNew}>
           <PencilIcon src="/images/board/list/write.png" />

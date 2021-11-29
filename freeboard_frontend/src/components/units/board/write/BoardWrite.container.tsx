@@ -18,9 +18,6 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const [addressDetail, setAddressDetail] = useState("");
   const [fileUrls, setFileUrls] = useState(["", "", ""]);
 
-  //1111
-  const [myImages, setMyImages] = useState<string[]>([]);
-
   const [myWriterError, setMyWriterError] = useState("");
   const [myPasswordError, setMyPasswordError] = useState("");
   const [myTitleError, setMyTitleError] = useState("");
@@ -123,9 +120,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
     setIsOpen(true);
   }
 
-  function onClickMyImage() {
-    fileRef.current?.click();
-  }
+  // function onClickMyImage() {
+  //   fileRef.current?.click();
+  // }
 
   async function onClickSubmit() {
     if (!myWriter) {
@@ -169,8 +166,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
       !myYoutube &&
       !address &&
       !addressDetail &&
-      !zipcode &&
-      !myImages
+      !zipcode
     ) {
       alert("수정된 내용이 없습니다.");
       return;
@@ -180,7 +176,6 @@ export default function BoardWrite(props: IBoardWriteProps) {
     if (myTitle) myUpdateboardInput.title = myTitle;
     if (myContents) myUpdateboardInput.contents = myContents;
     if (myYoutube) myUpdateboardInput.youtubeUrl = myYoutube;
-    if (myImages) myUpdateboardInput.images = myImages;
     if (zipcode || address || addressDetail) {
       myUpdateboardInput.boardAddress = {};
       if (zipcode) myUpdateboardInput.boardAddress.zipcode = zipcode;
@@ -231,7 +226,6 @@ export default function BoardWrite(props: IBoardWriteProps) {
       address={address}
       addressDetail={addressDetail}
       isOpen={isOpen}
-      onClickMyImage={onClickMyImage}
       fileUrls={fileUrls}
       onChangeFileUrls={onChangeFileUrls}
     />
