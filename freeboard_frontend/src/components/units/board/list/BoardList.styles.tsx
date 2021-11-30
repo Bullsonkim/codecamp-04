@@ -1,9 +1,14 @@
-import { IBoardListStylesProps, ITextTokenProps } from "./BoardList.types";
 import styled from "@emotion/styled";
+import { ITextTokenProps } from "./BoardList.types";
+
+export const MyTitle = styled.div`
+  font-size: 50px;
+  font-weight: bold;
+`;
 
 export const Wrapper = styled.div`
-  width: 100%;
-  margin: 40px;
+  width: 1200px;
+  margin: 100px;
   text-align: center;
 `;
 
@@ -28,18 +33,18 @@ export const Row = styled.div`
   }
 `;
 
+export const TextToken = styled.span`
+  color: ${(props: ITextTokenProps) => (props.isMatched ? "red" : "black")};
+`;
+
 export const ColumnHeaderBasic = styled.div`
   width: 10%;
   text-align: center;
-  font-weight: bold;
-  font-size: 20px;
 `;
 
 export const ColumnHeaderTitle = styled.div`
   width: 70%;
   text-align: center;
-  font-weight: bold;
-  font-size: 20px;
 `;
 
 export const ColumnBasic = styled.div`
@@ -51,8 +56,6 @@ export const ColumnTitle = styled.div`
   width: 70%;
   text-align: center;
   cursor: pointer;
-  text-overflow: ellipsis;
-  overflow: hidden;
 
   :hover {
     color: blue;
@@ -62,7 +65,7 @@ export const ColumnTitle = styled.div`
 export const Footer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding-top: 50px;
 `;
 
@@ -109,11 +112,6 @@ export const BestPicture = styled.div`
   background-color: #b2c7d9;
 `;
 
-export const MyTitle = styled.div`
-  font-size: 50px;
-  font-weight: bold;
-`;
-
 export const WrapperGroup = styled.div`
   display: flex;
   align-items: flex-end;
@@ -147,30 +145,4 @@ export const BestTitle = styled.div`
   padding-bottom: 10px;
   font-size: 18px;
   font-weight: bold;
-`;
-
-export const PageWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-`;
-
-export const Pagelist = styled.div`
-  font-size: 15px;
-`;
-
-export const NextPage = styled.div``;
-
-export const PrevPage = styled.div``;
-
-export const PageNum = styled.div``;
-
-export const Search = styled.input`
-  margin: 10px;
-  width: 1000px;
-  height: 50px;
-  border-radius: 10px;
-`;
-export const TextToken = styled.span`
-  color: ${(props: ITextTokenProps) => (props.isMatched ? "red" : "black")};
 `;

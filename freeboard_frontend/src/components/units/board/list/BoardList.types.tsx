@@ -13,7 +13,6 @@ export interface IBoardListStylesProps {
 export interface IBoardListUIProps {
   keyword: string;
   pagedata: any;
-  lastPage: number;
   onClickPage: MouseEventHandler<HTMLDivElement>;
   onClickPrevPage: MouseEventHandler<HTMLDivElement>;
   bestdata: any;

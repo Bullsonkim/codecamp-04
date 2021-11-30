@@ -1,10 +1,15 @@
-import { Wrapper, LoginTitle, LogOutTitle } from "./Header.style";
+import { Wrapper, Login, Logout } from "./Header.style";
+import { IHeaderUIProps } from "./Header.types";
 
-export default function HeaderUI() {
+export default function HeaderUI(props: IHeaderUIProps) {
   return (
     <Wrapper>
-      <LoginTitle>로그인</LoginTitle>
-      <LogOutTitle>로그아웃</LogOutTitle>
+      <Login id="/boards/login/" onClick={props.onClickMenu}>
+        로그인
+      </Login>
+      <Logout id="/login" onClick={props.onClickMenu}>
+        로그아웃
+      </Logout>
     </Wrapper>
   );
 }

@@ -11,28 +11,24 @@ import {
   Footer,
   PencilIcon,
   Button,
-  BestWriter,
-  BestTitle,
-  Bestlike,
-  BestDate,
+  TextToken,
   WrapperBest,
-  Bestbackground,
   MyTitle,
-  WrapperLeft,
-  WrapperRight,
+  Bestbackground,
   BestPicture,
   WrapperGroup,
+  WrapperLeft,
+  BestTitle,
+  BestWriter,
+  BestDate,
+  WrapperRight,
   LikePicture,
-  PageWrapper,
-  Pagelist,
-  NextPage,
-  PrevPage,
-  PageNum,
-  TextToken,
+  Bestlike,
 } from "./BoardList.styles";
-import { IBoardListUIProps } from "./BoardList.types";
+import Paginations01 from "../../../commons/paginations/01/Paginations01.container";
+import Searchbar from "../../../commons/search/Search.container";
 import { v4 as uuidv4 } from "uuid";
-import SearchBar from "../../../commons/search/Search.container";
+import { IBoardListUIProps } from "./BoardList.types";
 
 export default function BoardListUI(props: IBoardListUIProps) {
   return (
@@ -64,13 +60,13 @@ export default function BoardListUI(props: IBoardListUIProps) {
         <ColumnHeaderBasic>작성자</ColumnHeaderBasic>
         <ColumnHeaderBasic>날짜</ColumnHeaderBasic>
       </Row>
-      {props.pagedata?.fetchBoards.map((el, index) => (
+      {props.data?.fetchBoards.map((el, index) => (
         <Row key={el._id}>
           <ColumnBasic>{index + 1}</ColumnBasic>
           <ColumnTitle id={el._id} onClick={props.onClickMoveToBoardDetail}>
             {el.title
-              .replaceAll(props.keyword, `!@#${props.keyword}!@#`)
-              .split("!@#")
+              .replaceAll(props.keyword, `@#$%${props.keyword}@#$%`)
+              .split("@#$%")
               .map((el) => (
                 <TextToken key={uuidv4()} isMatched={props.keyword === el}>
                   {el}
@@ -82,48 +78,23 @@ export default function BoardListUI(props: IBoardListUIProps) {
         </Row>
       ))}
       <TableBottom />
-
-      <SearchBar
+      <Searchbar
         refetch={props.refetch}
         refetchBoardsCount={props.refetchBoardsCount}
         onChangeKeyword={props.onChangeKeyword}
       />
-
       <Footer>
+        <Paginations01
+          refetch={props.refetch}
+          count={props.count}
+          startPage={props.startPage}
+          setStartPage={props.setStartPage}
+        />
         <Button onClick={props.onClickMoveToBoardNew}>
           <PencilIcon src="/images/board/list/write.png" />
           게시물 등록하기
         </Button>
       </Footer>
-
-      <PageWrapper>
-        <PrevPage
-          onClick={props.onClickPrevPage}
-          style={{ margin: "10px", cursor: "pointer" }}
-        >
-          ◀️
-        </PrevPage>
-        {new Array(10).fill(1).map(
-          (_, index) =>
-            props.startPage + index <= props.lastPage && ( // 마지막 페이지보다 큰 페이지 번호는 안보이게 처리
-              <Pagelist
-                key={props.startPage + index}
-                onClick={props.onClickPage}
-                id={props.startPage + index}
-                style={{ margin: "10px", cursor: "pointer" }}
-              >
-                {props.startPage + index}
-              </Pagelist>
-            )
-        )}
-
-        <NextPage
-          onClick={props.onClickPrevPage}
-          style={{ margin: "10px", cursor: "pointer" }}
-        >
-          ▶️
-        </NextPage>
-      </PageWrapper>
     </Wrapper>
   );
 }
