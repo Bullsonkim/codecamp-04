@@ -12,21 +12,36 @@ export const Wrapper = styled.div`
   border: none;
   border-radius: 10px;
   align-content: center;
-  margin: 300px;
+  margin: 400px;
+  font-size: 50px;
 `;
-export const Email = styled.input`
+
+export const Label = styled.div`
+  width: 500px;
+  display: flex;
+  padding-top: 30px;
+`;
+
+export const InputName = styled.input`
   width: 500px;
   height: 100px;
   border-radius: 10px;
 `;
 
-export const Password = styled.input`
+export const Error = styled.div`
+  width: 500px;
+  font-size: 30px;
+  color: red;
+`;
+
+export const InputPassword = styled.input`
   width: 500px;
   height: 100px;
   border-radius: 10px;
 `;
 
-export const LoginBtn = styled.button`
+export const SubmitButton = styled.button`
+  margin: 30px;
   border-radius: 15px;
   width: 500px;
   height: 100px;
@@ -35,22 +50,12 @@ export const LoginBtn = styled.button`
   margin: 50px;
 `;
 
-export const MailWrapper = styled.button`
-  display: flex;
-  flex-direction: column;
-  border: none;
-  font-size: 50px;
-  background-color: white;
-`;
-
-export const PasswordWrapper = styled.button`
-  display: flex;
-  flex-direction: column;
-  font-size: 50px;
-  background-color: white;
-  border: none;
-`;
-
 export const Title = styled.div`
   font-size: 80px;
+`;
+
+export const InputEmail = styled.input`
+  width: 500px;
+  height: 100px;
+  border-radius: 10px;
 `;

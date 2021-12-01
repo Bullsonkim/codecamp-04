@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
 export const Login = styled.div`
   color: white;
   font-size: 50px;
+  padding-left: 20px;
   :hover {
     cursor: pointer;
   }
@@ -22,6 +23,14 @@ export const Logout = styled.div`
   font-size: 50px;
   padding-left: 20px;
   padding-right: 20px;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
+export const Join = styled.div`
+  color: white;
+  font-size: 50px;
   :hover {
     cursor: pointer;
   }
