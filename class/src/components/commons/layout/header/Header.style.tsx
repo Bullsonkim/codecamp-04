@@ -1,6 +1,17 @@
 import styled from "@emotion/styled";
 
-export const Header = styled.div`
+export const Wrapper = styled.div`
   height: 500px;
-  background-color: skyblue;
+`;
+
+export const Login = styled.div`
+  color: white;
+`;
+
+export const Logout = styled.div`
+  color: white;
+`;
+
+export const Join = styled.div`
+  color: white;
 `;

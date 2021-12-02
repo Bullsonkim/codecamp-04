@@ -26,36 +26,40 @@ export default function joinMember(props: IJoinUIProps) {
 
   function onChangeMyEmail(event: ChangeEvent<HTMLInputElement>) {
     setMyEmail(event.target.value);
-    if (event.target.value !== "" && /\w+@\w+\.\w+/.test(event.target.value)) {
+    if (event.target.value !== "") {
       setMyEmailError("");
     }
   }
 
   function onChangeMyPassword(event: ChangeEvent<HTMLInputElement>) {
     setMyPassword(event.target.value);
-    if (event.target.value !== "" && event.target.value.length >= 5) {
+    if (event.target.value !== "") {
       setMyPasswordError("");
     }
   }
+
   async function onClickSubmit() {
+    // let count = 0;
     if (!myName) {
       setMyNameError("이름을 입력해주세요!");
     }
 
-    if (!myEmail) {
+    if (!myEmail || /\w+@\w+\.\w+/.test(myEmail) === false) {
       setMyEmailError("이메일을 확인해 주세요!");
     }
-    if (!myPassword) {
+    if (!myPassword || myPassword.length < 5) {
       setMyPasswordError("비밀번호를 5자이상 입력해 주세요!");
     }
-
+    // if (count !== 0) {
+    //   return;
+    // }
     if (myName && myPassword && myEmail) {
       const result = await createUser({
         variables: {
           createUserInput: {
             name: myName,
-            password: myPassword,
             email: myEmail,
+            password: myPassword,
           },
         },
       });

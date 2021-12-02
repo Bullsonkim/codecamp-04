@@ -33,9 +33,16 @@ const firebaseConfig = {
   messagingSenderId: "107701837723",
   appId: "1:107701837723:web:fe2a5441048e5a36434b3e",
 };
+
 interface IGlobalContext {
-  accessToken: string;
+  accessToken?: string;
   setAccessToken?: Dispatch<SetStateAction<string>>;
+  userInfo?: {
+    name?: string;
+    email?: string;
+    picture?: string;
+  };
+  setUserUnfo?: Dispatch<SetStateAction<{}>>;
 }
 
 // Initialize Firebase

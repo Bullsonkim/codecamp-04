@@ -23,9 +23,11 @@ export default function Layout(props: ILayoutProps) {
   const router = useRouter();
   console.log(router);
   const isHiddenHeader = HIDDEN_HEADERS.includes(router.asPath);
+  console.log(isHiddenHeader);
   return (
     <Wrapper>
-      {!isHiddenHeader && <Header />}
+      {/* {!isHiddenHeader && } */}
+      <Header />
       <Banner />
       <Navigation />
       <BodyWrapper>

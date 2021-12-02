@@ -1,5 +1,6 @@
-import { Header } from "./Header.style";
+import { Wrapper } from "./Header.style";
+import { IHeaderUIProps } from "./Header.types";
 
-export default function HeaderUI() {
-  return <Header>여기는 해더 영역 입니다.</Header>;
+export default function HeaderUI(props: IHeaderUIProps) {
+  return <Wrapper></Wrapper>;
 }

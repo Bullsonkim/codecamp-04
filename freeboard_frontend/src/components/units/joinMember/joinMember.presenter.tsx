@@ -11,7 +11,7 @@ export default function JoinMemberUI(props: IJoinUIProps) {
         onChange={props.onChangeMyname}
         placeholder="이름을 입력하세요!"
       />
-      <S.Error>{props.myEmailError} </S.Error>
+      <S.Error>{props.myNameError} </S.Error>
       <S.Label>E-Mail</S.Label>
       <S.InputEmail
         type="text"

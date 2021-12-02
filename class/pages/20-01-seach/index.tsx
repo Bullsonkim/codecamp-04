@@ -1,6 +1,9 @@
 import { useQuery, gql } from "@apollo/client";
 import { ChangeEvent, useState } from "react";
-import { IQuery } from "../../src/commons/types/generated/types";
+import {
+  IQuery,
+  IQueryFetchBoardsArgs,
+} from "../../src/commons/types/generated/types";
 
 const FETCH_BOARDS = gql`
   query fetchBoards($search: String) {
