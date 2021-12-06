@@ -23,12 +23,18 @@ export default function NavigationUI() {
     router.push("/firebase/");
   }
 
+  function onClickMoveMarKet(event) {
+    router.push("/market/list/");
+  }
+
   return (
     <Wrapper>
       <Navigation onClick={onClickMoveBoardlist} style={{ cursor: "pointer" }}>
         자유게시판
       </Navigation>
-      <Store>스토어</Store>
+      <Store onClick={onClickMoveMarKet} style={{ cursor: "pointer" }}>
+        맛집 리스트
+      </Store>
       <Dessert onClick={onClickMoveDesert} style={{ cursor: "pointer" }}>
         랜덤음식보기
       </Dessert>

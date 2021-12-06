@@ -22,7 +22,7 @@ export default function GraphqlMutationBoard3Page(){
         contents:""
 
     })
-
+    
     // const [myWriter, setMyWriter] = useState("")
     // const [myTitle, setMyTitle] = useState("")
     // const [myContents, setMyContents] = useState("")

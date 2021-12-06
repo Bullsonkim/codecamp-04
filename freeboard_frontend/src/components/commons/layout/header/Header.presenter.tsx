@@ -10,9 +10,10 @@ export default function HeaderUI(props: IHeaderUIProps) {
       <Login id="/boards/login/" onClick={props.onClickMenu}>
         로그인
       </Login>
-      <Logout id="/login" onClick={props.onClickMenu}>
+      {/* <Logout id="/login" onClick={props.onClickMenu}>
         로그아웃
-      </Logout>
+      </Logout> */}{" "}
+      */
     </Wrapper>
   );
 }

@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Searchbar = styled.div`
   padding-top: 20px;
-  padding-left: 250px;
+  padding-left: 50px;
 `;
 
 export const SearchbarInput = styled.input`
